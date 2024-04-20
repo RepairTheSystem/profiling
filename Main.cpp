@@ -3,10 +3,10 @@
 #include <random>
 
 // lenght and width of matrix
-const int N = 5000, M = 5000;
+const int N = 1000, M = 1000;
 
 void sum_horizontally(int matrix[N][M]) {
-    int sum = 0;
+    unsigned long long sum = 0;
     for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
             sum += matrix[i][j];
@@ -15,7 +15,7 @@ void sum_horizontally(int matrix[N][M]) {
 }
 
 void sum_vertically(int matrix[N][M]) {
-    int sum = 0;
+    unsigned long long sum = 0;
     for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
             sum += matrix[j][i];
@@ -29,8 +29,7 @@ int main() {
     // filling matrix with random numbers
     for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
-            matrix[i][j] = rand() % 100000;
-            matrix[i][j] += rand() / 100000;
+            matrix[i][j] = rand() % 1000;
         }
     }
     
@@ -44,7 +43,7 @@ int main() {
     sum_vertically(matrix);
     auto time_end_2 = std::chrono::high_resolution_clock::now();
 
-    std::cout << "vertically time " << std::chrono::duration<double, std::milli>(time_start_2 - time_end_2).count() << std::endl;
+    std::cout << "vertically time " << std::chrono::duration<double, std::milli>(time_end_2 - time_start_2).count() << std::endl;
     
     return 0;
 }
